@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Dischi JSON</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div id="app">
+        <header class="mb-3">
+            <section class="logo container h-100 d-flex align-items-center">
+                <img src="./img/spotify-logo-png-7057.png" alt="Spotify logo">
+            </section>
+        </header>
+
+        <!-- chiamata api con lista di cose -->
+        <div class="container my_bg_red">
+            <div class="row justify-content-center">
+                <div class="card col-2 album-element mx-5 mb-5" v-for="(element, index) in albumList" :key="index" data-bs-toggle="modal" :data-bs-target="'#album-modal-' + index">
+                    <img :src="element.cover" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>
+                                {{ element.title }}
+                            </b>
+                        </p>
+                        <p class="card-text">
+                            {{ element.artist }}
+                        </p>
+                        <p class="card-text">
+                            {{ element.releaseYear }}
+                        </p>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" :id="'album-modal-' + index"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <!-- Vertically centered modal -->
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img :src="element.cover" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <b>
+                                            {{ element.title }}
+                                        </b>
+                                    </p>
+                                    <p class="card-text">
+                                        {{ element.artist }}
+                                    </p>
+                                    <p class="card-text">
+                                        {{ element.releaseYear }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
